@@ -1,0 +1,118 @@
+# Setting Up the Anthropic API Key
+
+## Quick Setup (Before Running)
+
+### Option 1: Command Line (Temporary - Current Session Only)
+
+**Windows Command Prompt:**
+```cmd
+set ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxxxxxxx
+setup_and_run.bat
+```
+
+**Windows PowerShell:**
+```powershell
+$env:ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxxxxxxxxxx"
+python app.py
+```
+
+### Option 2: Permanent System Environment Variable
+
+**Windows:**
+1. Press `Win + X` and select "System"
+2. Click "Advanced system settings"
+3. Click "Environment Variables"
+4. Under "User variables" click "New"
+5. Variable name: `ANTHROPIC_API_KEY`
+6. Variable value: `sk-ant-xxxxxxxxxxxxxxxxxxxxx`
+7. Click "OK" on all windows
+8. **Important:** Restart your terminal/command prompt
+9. Run `setup_and_run.bat`
+
+**Linux/Mac:**
+Add to your `~/.bashrc` or `~/.zshrc`:
+```bash
+export ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxxxxxxxxxx"
+```
+Then run: `source ~/.bashrc` and start the app
+
+### Option 3: Create .env File (Not Implemented - Manual Setup Only)
+
+If you prefer, you can modify app.py to load from a .env file, but the above methods work out of the box.
+
+---
+
+## How to Check if API Key is Working
+
+### Method 1: Check Status Endpoint
+Visit: http://localhost:5000/status
+
+You should see:
+```json
+{
+  "ai_enabled": true,
+  ...
+}
+```
+
+### Method 2: Console Output
+When you run `setup_and_run.bat`, you'll see:
+- ✅ "AI features ENABLED - API key found" (with key)
+- ⚠️ "AI features DISABLED - No API key set" (without key)
+
+### Method 3: In the App
+After classification (Step 4), you'll see:
+- **With API:** A blue box showing "🤖 AI Analysis - Powered by Claude"
+- **Without API:** Only the surface classification results (still works!)
+
+---
+
+## What Works Without API Key?
+
+**Everything works!** The app uses geometric algorithms as fallback:
+- ✅ STL upload and analysis
+- ✅ 3D visualization
+- ✅ Region detection
+- ✅ Surface classification (geometric)
+- ✅ STEP file generation
+- ✅ All downloads
+
+**With API key, you get:**
+- 🤖 AI-powered surface analysis
+- 💡 Object type suggestions (e.g., "This appears to be a mechanical bracket...")
+- 📝 Enhanced surface descriptions
+- 🎯 Better insights into the geometry
+
+---
+
+## Troubleshooting
+
+### "API key not found" but I set it
+- **Restart your terminal/command prompt** after setting environment variable
+- Make sure there are no quotes around the key in system environment variables
+- Check spelling: `ANTHROPIC_API_KEY` (not ANTHROPIC_KEY)
+
+### "AI features disabled" in setup
+- The key is not set in the current session
+- Try Option 1 above (set in same terminal before running)
+
+### API calls failing
+- Verify the API key is valid at https://console.anthropic.com
+- Check your internet connection
+- The app will still work with geometric fallback
+
+### Rate limits
+- Free tier: Limited requests per minute
+- The app makes 1 API call per classification
+- If you hit limits, wait a minute and try again
+
+---
+
+## For Graders
+
+If you have a university-provided API key:
+1. Use **Option 1** for quick testing: `set ANTHROPIC_API_KEY=your_key`
+2. Run `setup_and_run.bat`
+3. You'll see AI analysis in the classification step
+
+The app is designed to work perfectly **without** the API key - it just won't show the AI analysis box.

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADBridgeAI - STL to STEP Converter</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🔧 CADBridgeAI</h1>
+                <p class="tagline">AI-Driven STL to STEP Converter</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Step 1: Upload -->
+            <section id="upload-section" class="section active">
+                <div class="section-header">
+                    <h2>Step 1: Upload STL File</h2>
+                    <div class="step-indicator">1 of 5</div>
+                </div>
+                
+                <div class="upload-area" id="drop-zone">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop STL File</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="file-input" accept=".stl" hidden>
+                    <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
+                        Choose File
+                    </button>
+                </div>
+
+                <div class="settings-panel">
+                    <h3>Conversion Settings</h3>
+                    <div class="setting-group">
+                        <label for="units">Units:</label>
+                        <select id="units">
+                            <option value="mm">Millimeters (mm)</option>
+                            <option value="cm">Centimeters (cm)</option>
+                            <option value="in">Inches (in)</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label for="tolerance">Tolerance:</label>
+                        <input type="number" id="tolerance" value="0.01" step="0.001" min="0.001">
+                    </div>
+                </div>
+
+                <div id="upload-status" class="status-message"></div>
+            </section>
+
+            <!-- Step 2: Analysis -->
+            <section id="analysis-section" class="section">
+                <div class="section-header">
+                    <h2>Step 2: Mesh Analysis</h2>
+                    <div class="step-indicator">2 of 5</div>
+                </div>
+
+                <!-- 3D Preview -->
+                <div class="viewer-container">
+                    <h3>3D Model Preview</h3>
+                    <div id="stl-viewer" class="model-viewer"></div>
+                    <div class="viewer-controls">
+                        <button class="btn-small" onclick="resetCamera()">Reset View</button>
+                        <button class="btn-small" onclick="toggleWireframeView()">Wireframe</button>
+                    </div>
+                </div>
+                
+                <div class="analysis-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">▲</div>
+                        <div class="stat-value" id="num-triangles">-</div>
+                        <div class="stat-label">Triangles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">●</div>
+                        <div class="stat-value" id="num-vertices">-</div>
+                        <div class="stat-label">Vertices</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-value" id="volume">-</div>
+                        <div class="stat-label">Volume</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📏</div>
+                        <div class="stat-value" id="surface-area">-</div>
+                        <div class="stat-label">Surface Area</div>
+                    </div>
+                </div>
+
+                <div class="bounding-box-info">
+                    <h3>Bounding Box</h3>
+                    <div id="bbox-dims">-</div>
+                </div>
+
+                <button class="btn btn-primary" id="start-detection">
+                    Detect Geometric Regions →
+                </button>
+            </section>
+
+            <!-- Step 3: Region Detection -->
+            <section id="detection-section" class="section">
+                <div class="section-header">
+                    <h2>Step 3: Geometry Detection</h2>
+                    <div class="step-indicator">3 of 5</div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="detection-progress"></div>
+                </div>
+
+                <div id="regions-container" class="regions-grid"></div>
+
+                <button class="btn btn-primary" id="start-classification">
+                    Classify with AI →
+                </button>
+            </section>
+
+            <!-- Step 4: AI Classification & Mapping -->
+            <section id="classification-section" class="section">
+                <div class="section-header">
+                    <h2>Step 4: AI Classification & Mapping</h2>
+                    <div class="step-indicator">4 of 5</div>
+                </div>
+
+                <div class="mapping-editor">
+                    <h3>Surface Mapping</h3>
+                    <p class="help-text">Review and edit the AI-detected surface types. Click on any region to modify.</p>
+                    
+                    <div id="mapping-list" class="mapping-list"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="save-mapping">Save Mapping</button>
+                    <button class="btn btn-primary" id="generate-step">
+                        Generate STEP File →
+                    </button>
+                </div>
+            </section>
+
+            <!-- Step 5: Download Results -->
+            <section id="results-section" class="section">
+                <div class="section-header">
+                    <h2>Step 5: Download Results</h2>
+                    <div class="step-indicator">5 of 5</div>
+                </div>
+
+                <div class="success-message">
+                    <div class="success-icon">✓</div>
+                    <h3>Conversion Complete!</h3>
+                    <p>Your STEP file has been generated successfully.</p>
+                </div>
+
+                <!-- Side-by-side comparison -->
+                <div class="comparison-container">
+                    <div class="comparison-panel">
+                        <h3>Original STL (Mesh)</h3>
+                        <div id="stl-comparison-viewer" class="comparison-viewer"></div>
+                        <div class="viewer-controls-inline">
+                            <button class="btn-small" onclick="toggleSTLWireframe()">Toggle Wireframe</button>
+                            <button class="btn-small" onclick="resetSTLView()">Reset View</button>
+                        </div>
+                        <p class="viewer-label">Triangle-based mesh representation</p>
+                    </div>
+                    <div class="comparison-panel">
+                        <h3>Generated STEP (Surfaces)</h3>
+                        <div id="step-comparison-viewer" class="comparison-viewer"></div>
+                        <div class="viewer-controls-inline">
+                            <button class="btn-small" onclick="toggleSTEPWireframe()">Toggle Wireframe</button>
+                            <button class="btn-small" onclick="resetSTEPView()">Reset View</button>
+                        </div>
+                        <p class="viewer-label">Parametric surface representation</p>
+                    </div>
+                </div>
+
+                <div class="validation-report">
+                    <h3>Validation Report</h3>
+                    <div id="report-summary"></div>
+                </div>
+
+                <div class="download-buttons">
+                    <button class="btn btn-download" id="download-step">
+                        📥 Download STEP File
+                    </button>
+                    <button class="btn btn-download" id="download-mapping">
+                        📄 Download Mapping JSON
+                    </button>
+                    <button class="btn btn-download" id="download-report">
+                        📊 Download Validation Report
+                    </button>
+                </div>
+
+                <button class="btn btn-secondary" onclick="location.reload()">
+                    Start New Conversion
+                </button>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>CADBridgeAI v1.0 | Data-Driven Engineering Project | WiSe 2025/26</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <!-- Three.js for 3D visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Verify Three.js loaded
+        if (typeof THREE === 'undefined') {
+            console.error('THREE.js failed to load!');
+            alert('Error: 3D library failed to load. Please refresh the page.');
+        } else {
+            console.log('THREE.js loaded successfully, version:', THREE.REVISION);
+        }
+    </script>
+    <script src="/static/js/viewer.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
