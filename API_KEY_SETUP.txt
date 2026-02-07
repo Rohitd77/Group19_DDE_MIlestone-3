@@ -1,6 +1,10 @@
 # Setting Up the Anthropic API Key
 
+## ⚠️ FOR GRADERS: Your university will provide the API key - you don't need to create one!
+
 ## Quick Setup (Before Running)
+
+**You will receive the API key from your university/instructor. Just copy it and use Option 1 below.**
 
 ### Option 1: Command Line (Temporary - Current Session Only)
 
@@ -97,7 +101,7 @@ After classification (Step 4), you'll see:
 - Try Option 1 above (set in same terminal before running)
 
 ### API calls failing
-- Verify the API key is valid at https://console.anthropic.com
+- Ensure the API key provided by your university is copied correctly
 - Check your internet connection
 - The app will still work with geometric fallback
 
