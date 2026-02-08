@@ -1,18 +1,17 @@
 ====================================
-ANTHROPIC API KEY FOR GRADERS
+AI API KEY FOR GRADERS
 ====================================
 
-Paste your university-provided Anthropic API key below:
+QUICK SETUP:
 
-[PASTE YOUR API KEY HERE]
+1. Open .env file and replace 'your_api_key_here' with your actual API key:
+   ANTHROPIC_API_KEY=your-actual-api-key-here
 
-
-Then run this command in PowerShell BEFORE running setup_and_run.bat:
-
-    set ANTHROPIC_API_KEY=your_key_here
-
-Or use the detailed instructions in API_KEY_SETUP.txt
+2. Run the app:
+   setup_and_run.bat
 
 
 Note: The app works without an API key (geometric classification only).
 With the API key, you get enhanced AI-powered surface descriptions.
+
+For detailed instructions, see API_KEY_SETUP.txt

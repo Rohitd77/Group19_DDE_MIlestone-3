@@ -76,7 +76,7 @@ Successfully installed werkzeug-3.0.1
 python -c "import flask; print('Flask:', flask.__version__)"
 python -c "import numpy; print('NumPy:', numpy.__version__)"
 python -c "import stl; print('numpy-stl: OK')"
-python -c "import anthropic; print('Anthropic: OK')"
+python -c "import anthropic; print('AI Client: OK')"
 ```
 
 **Expected**: All imports successful with version numbers

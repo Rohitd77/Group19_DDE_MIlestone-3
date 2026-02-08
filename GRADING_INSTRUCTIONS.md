@@ -2,7 +2,7 @@
 
 ## � Important Note for Graders
 
-**API Key:** This application uses Anthropic Claude AI for enhanced surface classification. The app works perfectly **without** an API key (using geometric classification), but for full AI features, please use your university-provided Anthropic API key as mentioned in the submission guidelines (up to 10 requests will be used during testing).
+**API Key:** This application uses Claude AI for enhanced surface classification. The app works perfectly **without** an API key (using geometric classification), but for full AI features, please use your university-provided API key as mentioned in the submission guidelines (up to 10 requests will be used during testing).
 
 ---
 
@@ -10,9 +10,10 @@
 
 ### **Option 1: Automated Setup (Recommended)**
 
-1. **Set API Key** (Optional - use university-provided key for full AI features):
-   ```cmd
-   set ANTHROPIC_API_KEY=your_university_api_key_here
+1. **Set API Key** (Optional - edit .env file for full AI features):
+   Edit `.env` file:
+   ```
+   ANTHROPIC_API_KEY=your_university_api_key_here
    ```
 
 2. **Run the application**:
@@ -38,7 +39,8 @@ venv\Scripts\activate.bat
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Set API key (optional)
+# 4. Set API key (optional) - edit .env file
+# Or set environment variable temporarily:
 set ANTHROPIC_API_KEY=your_api_key_here
 
 # 5. Run application
@@ -109,25 +111,27 @@ outputs/
 
 ## 🔑 API Key Configuration
 
-### **With University-Provided Anthropic API Key:**
+### **With University-Provided API Key:**
+
+**Recommended: Edit .env file**
+Edit `.env` and add your key:
+```
+ANTHROPIC_API_KEY=your-key-here
+```
+
+**Alternative - Temporary environment variable:**
 
 **Windows (Command Prompt):**
 ```cmd
-set ANTHROPIC_API_KEY=sk-ant-xxxxx
+set ANTHROPIC_API_KEY=your-key-here
 python app.py
 ```
 
 **Windows (PowerShell):**
 ```powershell
-$env:ANTHROPIC_API_KEY="sk-ant-xxxxx"
+$env:ANTHROPIC_API_KEY="your-key-here"
 python app.py
 ```
-
-**Permanent (add to system environment variables):**
-1. Search "Environment Variables" in Windows
-2. Add new system variable: `ANTHROPIC_API_KEY`
-3. Value: `sk-ant-xxxxx`
-4. Restart terminal
 
 ### **Behavior:**
 - **With API Key**: Enhanced AI-powered surface descriptions and recommendations
@@ -209,7 +213,7 @@ pip install -r requirements.txt
 ## 📝 Notes for Graders
 
 - The application works **completely offline** (without API key) using geometric algorithms
-- API key enables **enhanced AI descriptions** via Anthropic Claude
+- API key enables **enhanced AI descriptions** via Claude AI
 - All core functionality (detection, classification, STEP export) works without internet
 - Sample STL file (`sample_cube.stl`) is auto-generated for testing
 - The app has **comprehensive error handling** and user-friendly messages

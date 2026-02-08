@@ -111,7 +111,7 @@ This will install:
 - Flask (web framework)
 - numpy (numerical computations)
 - numpy-stl (STL file processing)
-- anthropic (Claude AI API)
+- anthropic (AI API client)
 - werkzeug (utilities)
 
 ### Step 4: Verify Installation
@@ -139,28 +139,23 @@ http://localhost:5000
 
 To enable AI-powered geometry classification:
 
-1. Set your Anthropic API key as an environment variable:
-
-**On Windows:**
-```bash
-set ANTHROPIC_API_KEY=your-api-key-here
-python app.py
-```
-
-**On Linux/Mac:**
-```bash
-export ANTHROPIC_API_KEY=your-api-key-here
-python app.py
-```
-
-2. Or create a `.env` file in the project root:
+1. **Edit `.env` file** and add your API key:
 ```
 ANTHROPIC_API_KEY=your-api-key-here
+FLASK_HOST=127.0.0.1
+FLASK_PORT=5000
+FLASK_DEBUG=False
 ```
 
-Then run:
+2. **Run the application:**
 ```bash
 python app.py
+```
+
+**Alternative:** Set environment variable directly (temporary):
+```bash
+set ANTHROPIC_API_KEY=your-key    # Windows
+export ANTHROPIC_API_KEY=your-key  # Linux/Mac
 ```
 
 ### The application will start on:
@@ -223,13 +218,11 @@ Recommended file size: < 10 MB, < 1M triangles for optimal performance
 
 ## 🔑 API Key Setup
 
-### Getting an Anthropic API Key
+### Getting an AI API Key
 
-1. Visit https://console.anthropic.com/
-2. Sign up or log in
-3. Navigate to "API Keys"
-4. Create a new key
-5. Copy the key (starts with `sk-ant-...`)
+**For Graders:** Your university/instructor will provide the API key.
+
+**For Others:** Get a Claude API key from https://console.anthropic.com/
 
 ### Cost Estimation
 
@@ -240,19 +233,20 @@ With Claude Sonnet 4:
 
 ### Setting the API Key
 
-**Method 1: Environment Variable (Recommended)**
+**Method 1: Using .env file (Recommended)**
+
+Edit `.env` and add your key:
+```
+ANTHROPIC_API_KEY=your-api-key-here
+```
+
+**Method 2: Environment Variable (Temporary)**
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-api03-...
+export ANTHROPIC_API_KEY=your-key  # Linux/Mac
+set ANTHROPIC_API_KEY=your-key     # Windows
 ```
 
-**Method 2: Directly in code (for testing only)**
-
-Edit `app.py` line 28:
-```python
-ANTHROPIC_API_KEY = 'sk-ant-api03-...'
-```
-
-**⚠️ Security Note**: Never commit API keys to version control!
+**⚠️ Security Note**: Never commit `.env` or API keys to version control! The `.env` file is already in `.gitignore`.
 
 ## 📁 Project Structure
 
@@ -288,7 +282,7 @@ cadbridgeai/
 - numpy-stl for STL parsing
 
 **AI Integration**:
-- Anthropic Claude API (Sonnet 4)
+- Claude AI API (Sonnet 4)
 - Fallback to rule-based classification
 - JSON-based surface mapping
 
@@ -398,7 +392,7 @@ This project was developed as part of the Data-Driven Engineering course at the 
 ## 🙏 Acknowledgments
 
 - Course instructors and TAs
-- Anthropic for Claude AI API
+- Claude AI team for API access
 - numpy-stl library contributors
 - Flask framework team
 

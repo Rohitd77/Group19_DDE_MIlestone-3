@@ -7,6 +7,10 @@ import numpy as np
 from flask import Flask, render_template, request, jsonify, send_file
 from werkzeug.utils import secure_filename
 from stl import mesh
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # -----------------------------
 # App setup
@@ -22,19 +26,20 @@ os.makedirs(app.config["OUTPUT_FOLDER"], exist_ok=True)
 
 ALLOWED_EXTENSIONS = {"stl"}
 
+# Load API key from .env file
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 
-# Optional: Anthropic AI for enhanced classification
+# Optional: AI for enhanced classification
 ANTHROPIC_CLIENT = None
 if ANTHROPIC_API_KEY:
     try:
         from anthropic import Anthropic
         ANTHROPIC_CLIENT = Anthropic(api_key=ANTHROPIC_API_KEY)
     except ImportError:
-        print("Warning: anthropic package not installed. AI features disabled.")
+        print("Warning: AI package not installed. AI features disabled.")
         ANTHROPIC_CLIENT = None
     except Exception as e:
-        print(f"Warning: Could not initialize Anthropic client: {e}")
+        print(f"Warning: Could not initialize AI client: {e}")
         ANTHROPIC_CLIENT = None
 
 
@@ -439,4 +444,8 @@ def get_stl(job_id):
 # Run
 # -----------------------------
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    host = os.getenv("FLASK_HOST", "0.0.0.0")
+    port = int(os.getenv("FLASK_PORT", "5000"))
+    debug = os.getenv("FLASK_DEBUG", "True").lower() == "true"
+    
+    app.run(host=host, port=port, debug=debug)

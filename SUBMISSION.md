@@ -92,7 +92,11 @@ The application works **completely without an API key** using intelligent rule-b
 ### Option 2: With AI Classification (Optional)
 For enhanced AI-powered geometry classification:
 
-**Set environment variable:**
+**Quick Setup:**
+1. Edit `.env` file and add your API key
+2. Run the app
+
+**Alternative - Set environment variable:**
 - Windows: `set ANTHROPIC_API_KEY=your-key`
 - Linux/Mac: `export ANTHROPIC_API_KEY=your-key`
 
@@ -197,7 +201,7 @@ Test all features:
 ### Backend (Flask + Python)
 - **Framework**: Flask web server
 - **Geometry**: numpy-stl for mesh processing
-- **AI**: Anthropic Claude API
+- **AI**: Claude API for intelligent classification
 - **Data**: JSON for mappings, ISO-10303 for STEP
 
 ### Frontend (Vanilla Web)

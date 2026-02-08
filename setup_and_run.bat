@@ -46,12 +46,19 @@ echo.
 
 REM Check API key
 echo [5/6] Checking API configuration...
-if defined ANTHROPIC_API_KEY (
-    echo AI features ENABLED - API key found
+if exist .env (
+    echo Configuration file found (.env)
 ) else (
-    echo AI features DISABLED - No API key set
-    echo Set ANTHROPIC_API_KEY environment variable to enable AI
-    echo The app will work with geometric classification only
+    if defined ANTHROPIC_API_KEY (
+        echo AI features ENABLED - API key found in environment
+    ) else (
+        echo WARNING: No .env file found
+        echo AI features DISABLED - only basic geometric analysis available
+        echo.
+        echo To enable AI features:
+        echo   1. Edit .env file and add your API key
+        echo   See API_KEY_SETUP.txt for details
+    )
 )
 echo.
 

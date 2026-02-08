@@ -56,16 +56,16 @@ This creates `sample_cube.stl` - upload this through the web interface.
 
 **With API Key** (for AI classification):
 
-Windows:
-```bash
-set ANTHROPIC_API_KEY=your-key-here
-python app.py
+**Method 1: .env file (Recommended)**
+Edit `.env` and add your API key:
+```
+ANTHROPIC_API_KEY=your-key-here
 ```
 
-Linux/Mac:
+**Method 2: Environment variable (Temporary)**
 ```bash
-export ANTHROPIC_API_KEY=your-key-here
-python app.py
+set ANTHROPIC_API_KEY=your-key    # Windows
+export ANTHROPIC_API_KEY=your-key  # Linux/Mac
 ```
 
 **API Key can be provided separately if needed for grading.**

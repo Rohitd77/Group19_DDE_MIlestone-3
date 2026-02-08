@@ -1,48 +1,44 @@
-# Setting Up the Anthropic API Key
+# Setting Up the AI API Key
 
 ## ⚠️ FOR GRADERS: Your university will provide the API key - you don't need to create one!
 
-## Quick Setup (Before Running)
+## Quick Setup (2 Simple Steps)
 
-**You will receive the API key from your university/instructor. Just copy it and use Option 1 below.**
+**You will receive the API key from your university/instructor.**
 
-### Option 1: Command Line (Temporary - Current Session Only)
+### Step 1: Edit .env file
+Open `.env` in any text editor and replace `your_api_key_here` with your actual API key:
+```
+ANTHROPIC_API_KEY=your-actual-api-key-here
+FLASK_HOST=127.0.0.1
+FLASK_PORT=5000
+FLASK_DEBUG=False
+```
+
+### Step 2: Run the app
+```bash
+setup_and_run.bat
+```
+
+That's it! The app will automatically load your API key from the `.env` file.
+
+---
+
+## Alternative: Environment Variable (Advanced)
+
+If you prefer not to use a .env file, you can still set the environment variable:
 
 **Windows Command Prompt:**
 ```cmd
-set ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxxxxxxx
+set ANTHROPIC_API_KEY=your-api-key-here
 setup_and_run.bat
 ```
 
 **Windows PowerShell:**
 ```powershell
-$env:ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxxxxxxxxxx"
+$env:ANTHROPIC_API_KEY="your-api-key-here"
 python app.py
 ```
-
-### Option 2: Permanent System Environment Variable
-
-**Windows:**
-1. Press `Win + X` and select "System"
-2. Click "Advanced system settings"
-3. Click "Environment Variables"
-4. Under "User variables" click "New"
-5. Variable name: `ANTHROPIC_API_KEY`
-6. Variable value: `sk-ant-xxxxxxxxxxxxxxxxxxxxx`
-7. Click "OK" on all windows
-8. **Important:** Restart your terminal/command prompt
-9. Run `setup_and_run.bat`
-
-**Linux/Mac:**
-Add to your `~/.bashrc` or `~/.zshrc`:
-```bash
-export ANTHROPIC_API_KEY="sk-ant-xxxxxxxxxxxxxxxxxxxxx"
-```
-Then run: `source ~/.bashrc` and start the app
-
-### Option 3: Create .env File (Not Implemented - Manual Setup Only)
-
-If you prefer, you can modify app.py to load from a .env file, but the above methods work out of the box.
 
 ---
 
