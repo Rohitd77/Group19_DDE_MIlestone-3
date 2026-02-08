@@ -141,7 +141,7 @@ To enable AI-powered geometry classification:
 
 1. **Edit `.env` file** and add your API key:
 ```
-ANTHROPIC_API_KEY=your-api-key-here
+API_KEY=your-api-key-here
 FLASK_HOST=127.0.0.1
 FLASK_PORT=5000
 FLASK_DEBUG=False
@@ -154,8 +154,8 @@ python app.py
 
 **Alternative:** Set environment variable directly (temporary):
 ```bash
-set ANTHROPIC_API_KEY=your-key    # Windows
-export ANTHROPIC_API_KEY=your-key  # Linux/Mac
+set API_KEY=your-key    # Windows
+export API_KEY=your-key  # Linux/Mac
 ```
 
 ### The application will start on:
@@ -236,13 +236,13 @@ Recommended file size: < 10 MB, < 1M triangles for optimal performance
 
 Edit `.env` and add your key:
 ```
-ANTHROPIC_API_KEY=your-api-key-here
+API_KEY=your-api-key-here
 ```
 
 **Method 2: Environment Variable (Temporary)**
 ```bash
-export ANTHROPIC_API_KEY=your-key  # Linux/Mac
-set ANTHROPIC_API_KEY=your-key     # Windows
+export API_KEY=your-key  # Linux/Mac
+set API_KEY=your-key     # Windows
 ```
 
 **⚠️ Security Note**: Never commit `.env` or API keys to version control! The `.env` file is already in `.gitignore`.

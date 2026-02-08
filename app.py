@@ -27,14 +27,14 @@ os.makedirs(app.config["OUTPUT_FOLDER"], exist_ok=True)
 ALLOWED_EXTENSIONS = {"stl"}
 
 # Load API key from .env file
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+API_KEY = os.getenv("API_KEY", "")
 
 # Optional: AI for enhanced classification
 ANTHROPIC_CLIENT = None
-if ANTHROPIC_API_KEY:
+if API_KEY:
     try:
         from anthropic import Anthropic
-        ANTHROPIC_CLIENT = Anthropic(api_key=ANTHROPIC_API_KEY)
+        ANTHROPIC_CLIENT = Anthropic(api_key=API_KEY)
     except ImportError:
         print("Warning: AI package not installed. AI features disabled.")
         ANTHROPIC_CLIENT = None
@@ -93,7 +93,7 @@ def status():
     return jsonify({
         "app": "CADBridgeAI",
         "status": "running",
-        "ai_enabled": bool(ANTHROPIC_API_KEY),
+        "ai_enabled": bool(API_KEY),
         "endpoints": [
             "/upload",
             "/analyze/<job_id>",

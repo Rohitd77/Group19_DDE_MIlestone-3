@@ -9,7 +9,7 @@
 ### Step 1: Edit .env file
 Open `.env` in any text editor and replace `your_api_key_here` with your actual API key:
 ```
-ANTHROPIC_API_KEY=your-actual-api-key-here
+API_KEY=your-actual-api-key-here
 FLASK_HOST=127.0.0.1
 FLASK_PORT=5000
 FLASK_DEBUG=False
@@ -30,13 +30,13 @@ If you prefer not to use a .env file, you can still set the environment variable
 
 **Windows Command Prompt:**
 ```cmd
-set ANTHROPIC_API_KEY=your-api-key-here
+set API_KEY=your-api-key-here
 setup_and_run.bat
 ```
 
 **Windows PowerShell:**
 ```powershell
-$env:ANTHROPIC_API_KEY="your-api-key-here"
+$env:API_KEY="your-api-key-here"
 python app.py
 ```
 
@@ -90,7 +90,7 @@ After classification (Step 4), you'll see:
 ### "API key not found" but I set it
 - **Restart your terminal/command prompt** after setting environment variable
 - Make sure there are no quotes around the key in system environment variables
-- Check spelling: `ANTHROPIC_API_KEY` (not ANTHROPIC_KEY)
+- Check spelling: `API_KEY`
 
 ### "AI features disabled" in setup
 - The key is not set in the current session
@@ -111,7 +111,7 @@ After classification (Step 4), you'll see:
 ## For Graders
 
 If you have a university-provided API key:
-1. Use **Option 1** for quick testing: `set ANTHROPIC_API_KEY=your_key`
+1. Use **Option 1** for quick testing: `set API_KEY=your_key`
 2. Run `setup_and_run.bat`
 3. You'll see AI analysis in the classification step
 

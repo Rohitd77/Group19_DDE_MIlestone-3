@@ -13,7 +13,7 @@
 1. **Set API Key** (Optional - edit .env file for full AI features):
    Edit `.env` file:
    ```
-   ANTHROPIC_API_KEY=your_university_api_key_here
+   API_KEY=your_university_api_key_here
    ```
 
 2. **Run the application**:
@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
 # 4. Set API key (optional) - edit .env file
 # Or set environment variable temporarily:
-set ANTHROPIC_API_KEY=your_api_key_here
+set API_KEY=your_api_key_here
 
 # 5. Run application
 python app.py
@@ -116,20 +116,20 @@ outputs/
 **Recommended: Edit .env file**
 Edit `.env` and add your key:
 ```
-ANTHROPIC_API_KEY=your-key-here
+API_KEY=your-key-here
 ```
 
 **Alternative - Temporary environment variable:**
 
 **Windows (Command Prompt):**
 ```cmd
-set ANTHROPIC_API_KEY=your-key-here
+set API_KEY=your-key-here
 python app.py
 ```
 
 **Windows (PowerShell):**
 ```powershell
-$env:ANTHROPIC_API_KEY="your-key-here"
+$env:API_KEY="your-key-here"
 python app.py
 ```
 

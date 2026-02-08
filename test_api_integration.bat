@@ -5,10 +5,10 @@ echo ========================================
 echo.
 
 echo 1. Checking environment variable...
-if "%ANTHROPIC_API_KEY%"=="" (
-    echo    [X] ANTHROPIC_API_KEY is NOT set
+if "%API_KEY%"=="" (
+    echo    [X] API_KEY is NOT set
 ) else (
-    echo    [OK] ANTHROPIC_API_KEY is set ^(length: %ANTHROPIC_API_KEY:~0,10%...^)
+    echo    [OK] API_KEY is set ^(length: %API_KEY:~0,10%...^)
 )
 echo.
 

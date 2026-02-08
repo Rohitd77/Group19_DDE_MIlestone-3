@@ -97,8 +97,8 @@ For enhanced AI-powered geometry classification:
 2. Run the app
 
 **Alternative - Set environment variable:**
-- Windows: `set ANTHROPIC_API_KEY=your-key`
-- Linux/Mac: `export ANTHROPIC_API_KEY=your-key`
+- Windows: `set API_KEY=your-key`
+- Linux/Mac: `export API_KEY=your-key`
 
 **API Key Available Upon Request:**
 We can provide our API key separately for grading if desired. The application will run approximately 10 requests which should cost < $0.50 total.

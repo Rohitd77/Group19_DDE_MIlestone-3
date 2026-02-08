@@ -59,13 +59,13 @@ This creates `sample_cube.stl` - upload this through the web interface.
 **Method 1: .env file (Recommended)**
 Edit `.env` and add your API key:
 ```
-ANTHROPIC_API_KEY=your-key-here
+API_KEY=your-key-here
 ```
 
 **Method 2: Environment variable (Temporary)**
 ```bash
-set ANTHROPIC_API_KEY=your-key    # Windows
-export ANTHROPIC_API_KEY=your-key  # Linux/Mac
+set API_KEY=your-key    # Windows
+export API_KEY=your-key  # Linux/Mac
 ```
 
 **API Key can be provided separately if needed for grading.**

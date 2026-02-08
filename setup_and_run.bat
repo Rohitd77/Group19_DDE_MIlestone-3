@@ -49,7 +49,7 @@ echo [5/6] Checking API configuration...
 if exist .env (
     echo Configuration file found (.env)
 ) else (
-    if defined ANTHROPIC_API_KEY (
+    if defined API_KEY (
         echo AI features ENABLED - API key found in environment
     ) else (
         echo WARNING: No .env file found

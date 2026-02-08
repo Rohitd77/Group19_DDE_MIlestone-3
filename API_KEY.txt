@@ -5,7 +5,7 @@ AI API KEY FOR GRADERS
 QUICK SETUP:
 
 1. Open .env file and replace 'your_api_key_here' with your actual API key:
-   ANTHROPIC_API_KEY=your-actual-api-key-here
+   API_KEY=your-actual-api-key-here
 
 2. Run the app:
    setup_and_run.bat
