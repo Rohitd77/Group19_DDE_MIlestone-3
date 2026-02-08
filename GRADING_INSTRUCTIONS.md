@@ -2,7 +2,7 @@
 
 ## � Important Note for Graders
 
-**API Key:** This application uses Claude AI for enhanced surface classification. The app works perfectly **without** an API key (using geometric classification), but for full AI features, please use your university-provided API key as mentioned in the submission guidelines (up to 10 requests will be used during testing).
+**API Key:** This application uses AI for enhanced surface classification. The app works perfectly **without** an API key (using geometric classification), but for full AI features, please use your university-provided API key as mentioned in the submission guidelines (up to 10 requests will be used during testing).
 
 ---
 
@@ -213,7 +213,7 @@ pip install -r requirements.txt
 ## 📝 Notes for Graders
 
 - The application works **completely offline** (without API key) using geometric algorithms
-- API key enables **enhanced AI descriptions** via Claude AI
+- API key enables **enhanced AI descriptions**
 - All core functionality (detection, classification, STEP export) works without internet
 - Sample STL file (`sample_cube.stl`) is auto-generated for testing
 - The app has **comprehensive error handling** and user-friendly messages

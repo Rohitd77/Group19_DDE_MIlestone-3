@@ -176,7 +176,7 @@ Test all features:
 
 2. **AI Integration**
    - Baseline: No AI-based geometry detection
-   - Our app: Claude API for surface classification
+   - Our app: AI-powered surface classification
 
 3. **Explainability**
    - Baseline: Black box conversion
@@ -201,7 +201,7 @@ Test all features:
 ### Backend (Flask + Python)
 - **Framework**: Flask web server
 - **Geometry**: numpy-stl for mesh processing
-- **AI**: Claude API for intelligent classification
+- **AI**: AI-powered intelligent classification
 - **Data**: JSON for mappings, ISO-10303 for STEP
 
 ### Frontend (Vanilla Web)

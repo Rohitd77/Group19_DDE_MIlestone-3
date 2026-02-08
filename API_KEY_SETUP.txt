@@ -62,7 +62,7 @@ When you run `setup_and_run.bat`, you'll see:
 
 ### Method 3: In the App
 After classification (Step 4), you'll see:
-- **With API:** A blue box showing "🤖 AI Analysis - Powered by Claude"
+- **With API:** A blue box showing "🤖 AI Analysis"
 - **Without API:** Only the surface classification results (still works!)
 
 ---

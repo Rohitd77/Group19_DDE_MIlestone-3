@@ -222,11 +222,10 @@ Recommended file size: < 10 MB, < 1M triangles for optimal performance
 
 **For Graders:** Your university/instructor will provide the API key.
 
-**For Others:** Get a Claude API key from https://console.anthropic.com/
+**For Others:** Contact your organization for an API key.
 
 ### Cost Estimation
 
-With Claude Sonnet 4:
 - Average cost per conversion: ~$0.01-0.05
 - 10 test runs: ~$0.10-0.50 total
 - We limit requests to minimize costs
@@ -282,7 +281,7 @@ cadbridgeai/
 - numpy-stl for STL parsing
 
 **AI Integration**:
-- Claude AI API (Sonnet 4)
+- AI-powered classification
 - Fallback to rule-based classification
 - JSON-based surface mapping
 
@@ -290,7 +289,7 @@ cadbridgeai/
 
 1. **Mesh Analysis**: Computes volume, surface area, bounding box using numpy-stl
 2. **Region Segmentation**: Clusters triangles by surface normal similarity
-3. **AI Classification**: Prompts Claude with geometric context
+3. **AI Classification**: AI analysis of geometric features
 4. **STEP Generation**: Creates ISO-10303 formatted output
 
 ### API Endpoints
@@ -336,7 +335,7 @@ app.run(debug=True, host='0.0.0.0', port=5001)
 
 **API rate limit error**
 - Wait a few minutes between requests
-- Claude has generous rate limits for reasonable usage
+- Most API services have reasonable rate limits
 
 ### STEP File Issues
 
@@ -392,7 +391,6 @@ This project was developed as part of the Data-Driven Engineering course at the 
 ## 🙏 Acknowledgments
 
 - Course instructors and TAs
-- Claude AI team for API access
 - numpy-stl library contributors
 - Flask framework team
 

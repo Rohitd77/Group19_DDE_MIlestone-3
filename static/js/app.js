@@ -257,7 +257,7 @@ function displayMapping(mapping) {
             <h4 style="margin: 0 0 10px 0; display: flex; align-items: center;">
                 <span style="font-size: 24px; margin-right: 10px;">🤖</span>
                 AI Analysis
-                <span style="margin-left: 10px; font-size: 12px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 4px;">Powered by Claude</span>
+                <span style="margin-left: 10px; font-size: 12px; background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 4px;">AI-Powered</span>
             </h4>
             <p style="margin: 0; line-height: 1.6; opacity: 0.95;">${mapping.summary.ai_description}</p>
         `;
