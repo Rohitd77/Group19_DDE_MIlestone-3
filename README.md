@@ -330,7 +330,7 @@ app.run(debug=True, host='0.0.0.0', port=5001)
 ### AI Classification Not Working
 
 **No API key error**
-- Set `ANTHROPIC_API_KEY` environment variable
+- Set `API_KEY` environment variable
 - Application falls back to rule-based classification
 
 **API rate limit error**
