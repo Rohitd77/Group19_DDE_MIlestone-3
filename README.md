@@ -122,19 +122,6 @@ python -c "import flask, numpy, stl, anthropic; print('All dependencies installe
 
 ## 🎮 Running the Application
 
-### Basic Usage (Without AI)
-
-The application works **without an API key** using rule-based classification:
-
-```bash
-python app.py
-```
-
-Then open your browser to:
-```
-http://localhost:5000
-```
-
 ### With AI Classification (Recommended)
 
 To enable AI-powered geometry classification:
@@ -147,15 +134,28 @@ FLASK_PORT=5000
 FLASK_DEBUG=False
 ```
 
+   **Alternative:** Set environment variable directly (temporary):
+   ```bash
+   set API_KEY=your-key    # Windows
+   export API_KEY=your-key  # Linux/Mac
+   ```
+
 2. **Run the application:**
 ```bash
 python app.py
 ```
 
-**Alternative:** Set environment variable directly (temporary):
+Then open your browser to:
+```
+http://localhost:5000
+```
+
+### Without AI (Optional)
+
+If you don't have an API key, the application also works **without one** using rule-based classification. Simply skip the `.env` setup and run:
+
 ```bash
-set API_KEY=your-key    # Windows
-export API_KEY=your-key  # Linux/Mac
+python app.py
 ```
 
 ### The application will start on:
